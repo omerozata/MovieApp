@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/moviesFragment">
+
+    <fragment
+        android:id="@+id/fragmentMovieDetails"
+        android:name="com.kuantum.movieapp.view.MovieDetailsFragment"
+        android:label="FragmentMovieDetails" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.kuantum.movieapp.view.MoviesFragment"
+        android:label="MoviesFragment" >
+        <action
+            android:id="@+id/action_moviesFragment_to_fragmentMovieDetails"
+            app:destination="@id/fragmentMovieDetails" />
+    </fragment>
+</navigation>
