@@ -12,6 +12,7 @@ interface MoviesAPI {
     @GET(".")
     suspend fun getMovies(
         @Query("s") title : String,
+        @Query("page") page : Int,
         @Query("apikey") apiKey : String = API_KEY
     ) : Response<MoviesDTO>
 

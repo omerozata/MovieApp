@@ -14,9 +14,9 @@ class MoviesRepositoryImpl @Inject constructor(
     private val api: MoviesAPI
 ) : MoviesRepository {
 
-    override suspend fun getMovies(title: String): Resource<List<Movie>> {
+    override suspend fun getMovies(title: String, page : Int): Resource<List<Movie>> {
         return try {
-            val response = api.getMovies(title = title)
+            val response = api.getMovies(title = title, page = page)
 
             if (response.isSuccessful) {
                 response.body()?.let {

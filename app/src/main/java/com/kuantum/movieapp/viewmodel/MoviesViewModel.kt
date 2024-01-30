@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.kuantum.movieapp.model.Movie
 import com.kuantum.movieapp.model.dto.MoviesDTO
 import com.kuantum.movieapp.repository.MoviesRepository
+import com.kuantum.movieapp.util.Constants.DEFAULT_SEARCH
 import com.kuantum.movieapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,14 +22,15 @@ class MoviesViewModel @Inject constructor(
     val movies: LiveData<Resource<List<Movie>>>
         get() = _movies
 
-    init {
-        getMovies("Terminator")
+    private val _page = MutableLiveData<Int>()
+    val page : LiveData<Int>
+        get() = _page
+
+    fun setPage(selectedPage: Int) {
+        _page.value = selectedPage
     }
 
-
-
-    fun getMovies(title: String) {
-
+    fun getMovies(title: String, page : Int) {
         if (title.isEmpty()) {
             return
         }
@@ -36,9 +38,13 @@ class MoviesViewModel @Inject constructor(
         _movies.value = Resource.Loading(null)
 
         viewModelScope.launch {
-            val response = repository.getMovies(title = title)
+            val response = repository.getMovies(title = title, page = page)
             _movies.value = response
         }
+    }
+
+    init {
+        getMovies(DEFAULT_SEARCH, 1)
     }
 
 }

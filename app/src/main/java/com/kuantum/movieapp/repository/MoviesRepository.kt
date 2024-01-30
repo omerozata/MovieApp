@@ -8,7 +8,7 @@ import com.kuantum.movieapp.util.Resource
 
 interface MoviesRepository {
 
-    suspend fun getMovies(title : String) : Resource<List<Movie>>
+    suspend fun getMovies(title : String, page : Int) : Resource<List<Movie>>
 
     suspend fun getMovieDetails(id : String) : Resource<MovieDetails>
 }

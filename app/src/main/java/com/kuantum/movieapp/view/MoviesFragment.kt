@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kuantum.movieapp.R
 import com.kuantum.movieapp.adapter.MoviesRecyclerAdapter
 import com.kuantum.movieapp.databinding.FragmentMoviesBinding
+import com.kuantum.movieapp.util.Constants.DEFAULT_SEARCH
 import com.kuantum.movieapp.util.Resource
 import com.kuantum.movieapp.viewmodel.MoviesViewModel
 import kotlinx.coroutines.Job
@@ -26,6 +27,8 @@ class MoviesFragment @Inject constructor(
 
     private var fragmentBinding: FragmentMoviesBinding? = null
     private lateinit var viewModel: MoviesViewModel
+    private var page: Int = 1
+    private var search: String = DEFAULT_SEARCH
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,10 +44,26 @@ class MoviesFragment @Inject constructor(
         binding.recyclerview.adapter = adapter
 
         adapter.onItemClick = {
-            findNavController().navigate(MoviesFragmentDirections.actionMoviesFragmentToFragmentMovieDetails(it))
+            findNavController().navigate(
+                MoviesFragmentDirections.actionMoviesFragmentToFragmentMovieDetails(it)
+            )
         }
 
-        var job : Job? = null
+        binding.btnLeft.setOnClickListener {
+            if (page > 1) {
+                page--
+                viewModel.getMovies(search, page)
+                viewModel.setPage(page)
+            }
+        }
+
+        binding.btnRight.setOnClickListener {
+            page++
+            viewModel.getMovies(search, page)
+            viewModel.setPage(page)
+        }
+
+        var job: Job? = null
         binding.editSearch.addTextChangedListener {
             job?.cancel()
 
@@ -52,14 +71,21 @@ class MoviesFragment @Inject constructor(
                 delay(1000)
 
                 it?.let {
-                    viewModel.getMovies(it.toString())
+                    if (it.toString() == search)
+                        return@launch
+                    if (it.toString().isEmpty())
+                        return@launch
+                    search = it.toString()
+                    page = 1
+                    viewModel.setPage(page)
+                    viewModel.getMovies(search, page)
                 }
             }
         }
     }
 
     private fun subscribeToObservers() {
-        viewModel.movies.observe(viewLifecycleOwner, Observer { it ->
+        viewModel.movies.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Loading -> {
                     fragmentBinding!!.progressBar.visibility = View.VISIBLE
@@ -81,6 +107,11 @@ class MoviesFragment @Inject constructor(
                     }
                 }
             }
+        })
+
+        viewModel.page.observe(viewLifecycleOwner, Observer {
+            page = it
+            fragmentBinding!!.txtPageNumber.text = page.toString()
         })
     }
 

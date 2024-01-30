@@ -1,5 +1,6 @@
 package com.kuantum.movieapp.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -34,7 +35,6 @@ class MovieDetailsFragment @Inject constructor(
             viewModel.getMovieDetails(id = id)
             println(id)
         }
-
         subscribeToObservers()
     }
 
@@ -61,7 +61,10 @@ class MovieDetailsFragment @Inject constructor(
                     it.data?.let { movieDetails ->
                         fragmentBinding!!.txtTitle.text = movieDetails.title
                         fragmentBinding!!.txtYear.text = movieDetails.year
-                        fragmentBinding!!.txtActors.text = movieDetails.actors
+                        fragmentBinding!!.txtDirector.text = "Director: ${movieDetails.director}"
+                        fragmentBinding!!.txtActors.text = "Actors: ${movieDetails.actors}"
+                        fragmentBinding!!.txtAwards.text = "Awards: ${movieDetails.awards}"
+                        fragmentBinding!!.txtRuntime.text = "Runtime: ${movieDetails.runtime}"
                         glide.load(movieDetails.poster).into(fragmentBinding!!.imageviewPoster)
                     }
                 }

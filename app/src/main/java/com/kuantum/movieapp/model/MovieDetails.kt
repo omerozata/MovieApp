@@ -1,8 +1,5 @@
 package com.kuantum.movieapp.model
 
-import com.google.gson.annotations.SerializedName
-import com.kuantum.movieapp.model.dto.Rating
-
 data class MovieDetails(
     val actors: String,
     val awards: String,
