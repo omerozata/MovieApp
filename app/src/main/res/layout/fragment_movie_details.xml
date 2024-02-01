@@ -82,6 +82,15 @@
             android:text="Runtime"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:layout_width="60dp"
+            android:background="@drawable/favorite_border"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            android:id="@+id/btn_favorite"
+            android:layout_height="60dp"/>
+
     </LinearLayout>
 
     <ProgressBar

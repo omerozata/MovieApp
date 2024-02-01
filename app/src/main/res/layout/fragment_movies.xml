@@ -4,18 +4,34 @@
     android:background="@color/light_gray"
     android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:id="@+id/edit_search"
-        android:textSize="23sp"
-        android:hint="Search Movie"
-        android:layout_alignParentTop="true"
-        android:textColor="@color/black"
-        android:layout_height="60dp"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="60dp"
+       android:id="@+id/relativelayout_search_and_fav"
+       android:orientation="horizontal">
+
+       <EditText
+           android:id="@+id/edit_search"
+           android:layout_width="match_parent"
+           android:layout_height="60dp"
+           android:layout_alignParentTop="true"
+           android:layout_marginRight="5dp"
+           android:layout_toLeftOf="@id/btn_favorite"
+           android:hint="Search Movie"
+           android:textColor="@color/black"
+           android:textSize="23sp" />
+
+       <Button
+           android:layout_width="60dp"
+           android:id="@+id/btn_favorite"
+           android:layout_alignParentEnd="true"
+           android:background="@drawable/favorite"
+           android:layout_height="60dp"/>
+   </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="3dp"
-        android:layout_below="@id/edit_search"
+        android:layout_below="@id/relativelayout_search_and_fav"
         android:layout_width="match_parent"
         android:id="@+id/recyclerview"
         android:layout_above="@id/linearlayout_page"

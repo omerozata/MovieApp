@@ -117,7 +117,6 @@ class MoviesFragment @Inject constructor(
 
     override fun onDestroyView() {
         super.onDestroyView()
-
         fragmentBinding = null
     }
 

@@ -15,3 +15,21 @@ data class MovieDetails(
     val writer: String,
     val year: String
 )
+
+fun MovieDetails.toSavedMovie(): SavedMovie {
+    return SavedMovie(
+        actors,
+        awards,
+        boxOffice,
+        country,
+        director,
+        imdbID,
+        imdbRating,
+        plot,
+        poster,
+        runtime,
+        title,
+        writer,
+        year
+    )
+}
