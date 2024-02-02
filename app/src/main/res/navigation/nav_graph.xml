@@ -11,6 +11,9 @@
         <argument
             android:name="id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentMovieDetails_to_favoriteListFragment"
+            app:destination="@id/favoriteListFragment" />
     </fragment>
     <fragment
         android:id="@+id/moviesFragment"
@@ -19,5 +22,24 @@
         <action
             android:id="@+id/action_moviesFragment_to_fragmentMovieDetails"
             app:destination="@id/fragmentMovieDetails" />
+        <action
+            android:id="@+id/action_moviesFragment_to_favoriteListFragment"
+            app:destination="@id/favoriteListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteListFragment"
+        android:name="com.kuantum.movieapp.view.FavoriteListFragment"
+        android:label="FavoriteListFragment" >
+        <action
+            android:id="@+id/action_favoriteListFragment_to_favMovieDetailsFragment"
+            app:destination="@id/favMovieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favMovieDetailsFragment"
+        android:name="com.kuantum.movieapp.view.FavMovieDetailsFragment"
+        android:label="FavMovieDetailsFragment" >
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
 </navigation>

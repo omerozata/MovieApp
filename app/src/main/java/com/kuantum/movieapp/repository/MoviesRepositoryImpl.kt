@@ -63,6 +63,10 @@ class MoviesRepositoryImpl @Inject constructor(
         return dao.getIds()
     }
 
+    override fun getMovie(id: String): LiveData<SavedMovie> {
+        return dao.getMovie(id)
+    }
+
     override fun getMovies(): LiveData<List<SavedMovie>> {
         return dao.getMovies()
     }

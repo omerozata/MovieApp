@@ -43,6 +43,10 @@ class MoviesFragment @Inject constructor(
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerview.adapter = adapter
 
+        binding.btnFavorite.setOnClickListener {
+            findNavController().navigate(MoviesFragmentDirections.actionMoviesFragmentToFavoriteListFragment())
+        }
+
         adapter.onItemClick = {
             findNavController().navigate(
                 MoviesFragmentDirections.actionMoviesFragmentToFragmentMovieDetails(it)

@@ -22,4 +22,7 @@ interface MoviesDao {
 
     @Query("SELECT imdbID FROM movies")
     fun getIds() : LiveData<List<String>>
+
+    @Query("SELECT * FROM movies WHERE imdbID = :id")
+    fun getMovie(id : String) : LiveData<SavedMovie>
 }

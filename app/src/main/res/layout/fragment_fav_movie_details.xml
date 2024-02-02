@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/light_gray"
+    android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:background="@drawable/ic_launcher_background"
+            android:id="@+id/imageview_poster"
+            android:layout_height="320dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/txt_title"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textAlignment="center"
+            android:text="Title"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/txt_year"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"
+            android:textAlignment="center"
+            android:text="1905"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/txt_director"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="9dp"
+            android:textAlignment="center"
+            android:text="Director"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/txt_actors"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="9dp"
+            android:textAlignment="center"
+            android:text="Actors"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/txt_awards"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="9dp"
+            android:textAlignment="center"
+            android:text="Awards"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/txt_runtime"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="9dp"
+            android:textAlignment="center"
+            android:text="Runtime"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="60dp"
+            android:background="@drawable/favorite"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:id="@+id/btn_favorite"
+            android:visibility="gone"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>

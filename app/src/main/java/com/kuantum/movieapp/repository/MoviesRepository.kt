@@ -21,4 +21,6 @@ interface MoviesRepository {
     fun getMovies() : LiveData<List<SavedMovie>>
 
     fun getIds() : LiveData<List<String>>
+
+    fun getMovie(id : String) : LiveData<SavedMovie>
 }
